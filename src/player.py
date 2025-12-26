@@ -1,5 +1,4 @@
 import random
-from typing import Optional
 
 from chip_collection import ChipCollection
 
@@ -23,7 +22,7 @@ class Player:
     def buy_chips(self, chip_1: int = 0, chip_5: int = 0, chip_25: int = 0, chip_100: int = 0) -> str:
         """"Покупка/докупка фишек"""
         if chip_1 + chip_5 * 5 + chip_25 * 25 + chip_100 * 100 > self.current_balance:
-            return f"""{self.name} имеет недостаточно денег (${self.current_balance}) для покупки {chip_1} фишекx1$, {chip_5}x5$, {chip_25}x25$, {chip_100}x100$."""
+            return f"""{self.name} имеет недостаточно денег (${self.current_balance}) для покупки фишек {chip_1}x1$, {chip_5}x5$, {chip_25}x25$, {chip_100}x100$."""
         
         self.chips += ChipCollection(chip_1, chip_5, chip_25, chip_100)
         self.current_balance -= chip_1 + chip_5 * 5 + chip_25 * 25 + chip_100 * 100
@@ -63,4 +62,4 @@ class Player:
             self.current_balance += count * nominal
         
         return f"""{self.name} перевел фишки: {chip_1}x1$, {chip_5}x5$, {chip_25}x25$, {chip_100}x100$ - в деньги."""
-
+    

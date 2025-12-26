@@ -1,5 +1,5 @@
+from __future__ import annotations
 from typing import Iterator, Tuple
-from chip_collection import ChipCollection
 
 class ChipCollection:
     def __init__(self, chip_1: int = 0, chip_5: int = 0, chip_25: int = 0, chip_100: int = 0):
@@ -17,6 +17,13 @@ class ChipCollection:
         nominal = [1, 5, 25, 100]
         for i in range(4):
             yield (self.chips[i], nominal[i])
+
+    def __setitem__(self, index: int, value: int) -> str | None:
+        """Позволяет делать stolen[index] = value"""
+        try:
+            self.chips[index] = value
+        except IndexError:
+            return IndexError("IndexError: индекс вне диапозона 0-3")
 
     def __getitem__(self, key) -> str | int | list[int]:
         """Обращение по индексу и срезы"""
@@ -57,3 +64,6 @@ class ChipCollection:
         """"Сравнение фишек. Обращаться >="""
         return all([self.chips[i] >= other.chips[i] for i in range(4)])
     
+    def no_zero_chips(self) -> list[int]:
+        """"Возвращает индексы не нулевых элементов коллекции"""
+        return [i for i in range(4) if self.chips[i] != 0]
