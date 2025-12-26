@@ -10,7 +10,7 @@ class UsersCazino():
         self.users = {}
         
     def __repr__(self) -> str:
-        return f"UsersCazino(panic_history={self.users})"
+        return f"UsersCazino(users={self.users})"
     
     def __str__(self) -> str:
         return f"""{self.users}"""
