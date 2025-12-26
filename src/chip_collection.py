@@ -19,7 +19,7 @@ class ChipCollection:
             yield (self.chips[i], nominal[i])
 
     def __setitem__(self, index: int, value: int) -> str | None:
-        """Позволяет делать stolen[index] = value"""
+        """Позволяет делать self[index] = value"""
         try:
             self.chips[index] = value
         except IndexError:
@@ -33,7 +33,7 @@ class ChipCollection:
             return IndexError("IndexError: индекс вне диапозона 0-3")
         
     def __len__(self) -> int:
-        """"Нахождение длины. Обращаться len(obj)"""
+        """"Нахождение длины. Обращаться len(self)"""
         return 4
     
     def __iadd__(self, other) -> ChipCollection:

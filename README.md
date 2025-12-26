@@ -8,8 +8,8 @@
  .venv\Scripts\activate
  (Для Linux: source .venv/bin/activate)
  Установка зависимостей:
- pip install -e .
- 
+ uv pip install -e .
+ python src\main.py --steps=20 --seed=3
  Вызов тестов: 
  pytest tests -v
 ```

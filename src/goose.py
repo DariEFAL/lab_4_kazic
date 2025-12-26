@@ -114,7 +114,7 @@ class HonkGoose(Goose):
                 f"    Паника игрока увеличилась на {player.panic - old_panic} (теперь: {player.panic})\n"
                 f"    Способность кражи гуся увеличилась на {self.honk_power} (теперь: до {self.steal_chips} фишек, либо до наличные // {self.STEAL_MONEY_COEF} наличных)")
     
-    def enlarget_steal_chip(self, player: Player) -> str:
+    def enlarged_steal_chip(self, player: Player) -> str:
         """
         Усиленная кража фишек после крика - использует увеличенную способность кражи.
         """
@@ -132,7 +132,7 @@ class HonkGoose(Goose):
         
         return result
     
-    def enlarget_steal_money(self, player: Player) -> str:
+    def enlarged_steal_money(self, player: Player) -> str:
         """
         Усиленная кража денег после крика - использует увеличенную способность кражи.
         """
