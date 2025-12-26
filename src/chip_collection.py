@@ -6,10 +6,10 @@ class ChipCollection:
         """Инициализация фишек"""
         self.chips = [chip_1, chip_5, chip_25, chip_100]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"ChipCollection(chip_1={self.chips[0]}, chip_5={self.chips[1]}, chip_25={self.chips[2]}, chip_100={self.chips[3]})"
     
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Фишки: {self.chips[0]}×1$, {self.chips[1]}×5$, {self.chips[2]}×25$, {self.chips[3]}×100$"
 
     def __iter__(self) -> Iterator[Tuple[int, int]]:
