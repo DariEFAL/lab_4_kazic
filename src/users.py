@@ -1,4 +1,6 @@
-
+from __future__ import annotations
+from player import Player
+from goose import Goose
 
 class UsersCazino():
     """
@@ -17,7 +19,7 @@ class UsersCazino():
         """"Итерация"""
         return iter(self.users.keys())
 
-    def __getitem__(self, key):
+    def __getitem__(self, key) -> Player | Goose | None:
         """Позволяет обращаться через self[key]"""
         return self.users[key]
     
@@ -36,6 +38,17 @@ class UsersCazino():
     def __len__(self):
         """Позволяет использовать len(self)"""
         return len(self.users)
+    
+    def __add__(self, other: UsersCazino) -> UsersCazino:
+        """
+        Объединение двух коллекций UsersCazino.
+        """
+        
+        result = UsersCazino()
+        result.users.update(self.users)
+        result.users.update(other.users)
+        
+        return result
     
     def keys(self):
         """Возвращает ключи"""

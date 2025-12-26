@@ -59,9 +59,9 @@ class Casino:
     def event_goose_steal_chips(self) -> None:
         """Гусь крадет фишки у случайного игрока."""
         try:
-            id_player = self.random_player()
+            player_id = self.random_player()
             goose: Goose = self.all_goose[self.random_goose()]
-            player: Player = self.all_users[id_player]
+            player: Player = self.all_users[player_id]
             
             if goose and player:
                 if isinstance(goose, HonkGoose):
@@ -79,9 +79,8 @@ class Casino:
                     if isinstance(goose, PlayGoose):
                         goose.chips += player.chips
                         print(f"Все его фишки достались гусю {goose.name}")
-
-                    player.chips = 0, 0, 0, 0
-                    player.panic = 0
+                    
+                    del self.all_users[player_id]
                     
             else: print("Нет гусей или игроков для кражи фишек.")
         
@@ -91,9 +90,9 @@ class Casino:
     def event_goose_steal_money(self) -> None:
         """Гусь крадет деньги у случайного игрока."""
         try:
-            id_player = self.random_player()
+            player_id = self.random_player()
             goose: Goose = self.all_goose[self.random_goose()]
-            player: Player = self.all_users[id_player]
+            player: Player = self.all_users[player_id]
             
             if goose and player:
                 if isinstance(goose, HonkGoose):
@@ -112,9 +111,8 @@ class Casino:
                         goose.chips += player.chips
                         print(f"Все его фишки достались гусю {goose.name}")
 
-                    player.chips = 0, 0, 0, 0
-                    player.panic = 0
-                    
+                    del self.all_users[player_id]
+
             else: print("Нет гусей или игроков для кражи денег.")
         
         except Exception as e:
@@ -143,15 +141,16 @@ class Casino:
                     all_honk_goose[name] = goose
             
             goose: HonkGoose = all_honk_goose[random.choice(list(all_honk_goose))]
-            player: Player = self.all_users[self.random_player()]
+            player_id = self.random_player()
+            player: Player = self.all_users[player_id]
 
             if goose and player:
                 print(goose.honk(player))
 
                 if player.panic == 100:
                     print(f"Игрок {player.name} очень испугался гусей и сбежал из казино.")
-                    player.chips = 0, 0, 0, 0
-                    player.panic = 0
+
+                    del self.all_users[player_id]
                     
             else: print("Нет гусей-крикунов")
 
@@ -179,7 +178,7 @@ class Casino:
             print(f"Ошибка: {e}")
     
     def event_player_buy_chips(self) -> None:
-        """Событие: игрок покупает фишки в казино."""
+        """игрок покупает фишки в казино."""
         try:
             player_id = self.random_player()
             if player_id is None:
