@@ -1,5 +1,4 @@
 from unittest.mock import patch
-from typing import Dict, Any
 
 from src.player import Player
 
@@ -39,8 +38,8 @@ def test_buy_chips_success() -> None:
     assert player.chips.chips == [5, 2, 1, 0]
     assert "купил фишки" in result
 
-test_buy_chips_insufficient_balance
-def () -> None:
+
+def test_buy_chips_insufficient_balance() -> None:
     """Проверяет попытку покупки фишек при недостаточном балансе"""
     player = Player("Иван", 10)
     result = player.buy_chips(0, 0, 1, 0)
