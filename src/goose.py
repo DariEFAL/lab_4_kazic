@@ -93,9 +93,7 @@ class HonkGoose(Goose):
                 f"базовая кража: до {self.steal_chips} фишек)")
     
     def honk(self, player: Player) -> str:
-        """
-        Гусь кричит на игрока, вызывая панику и увеличивая свою способность к краже.
-        """
+        """Гусь кричит на игрока, вызывая панику и увеличивая свою способность к краже."""
         if self.steal_chips != self.base_steal:
             return f"Гусь уже кричал!"
         
@@ -115,9 +113,7 @@ class HonkGoose(Goose):
                 f"    Способность кражи гуся увеличилась на {self.honk_power} (теперь: до {self.steal_chips} фишек, либо до наличные // {self.STEAL_MONEY_COEF} наличных)")
     
     def enlarged_steal_chip(self, player: Player) -> str:
-        """
-        Усиленная кража фишек после крика - использует увеличенную способность кражи.
-        """
+        """Усиленная кража фишек после крика - использует увеличенную способность кражи."""
         current_steal = self.steal_chips - self.honk_power
 
         if current_steal != self.base_steal:
@@ -133,9 +129,7 @@ class HonkGoose(Goose):
         return result
     
     def enlarged_steal_money(self, player: Player) -> str:
-        """
-        Усиленная кража денег после крика - использует увеличенную способность кражи.
-        """
+        """Усиленная кража денег после крика - использует увеличенную способность кражи."""
         current_steal = self.steal_chips - self.honk_power
 
         if current_steal != self.base_steal:

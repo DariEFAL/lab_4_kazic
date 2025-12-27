@@ -23,14 +23,14 @@ class ChipCollection:
         try:
             self.chips[index] = value
         except IndexError:
-            return IndexError("IndexError: индекс вне диапозона 0-3")
+            return IndexError("индекс вне диапозона 0-3")
 
     def __getitem__(self, key) -> str | int | list[int]:
         """Обращение по индексу и срезы"""
         try:
             return self.chips[key]
         except IndexError:
-            return IndexError("IndexError: индекс вне диапозона 0-3")
+            return IndexError("индекс вне диапозона 0-3")
         
     def __len__(self) -> int:
         """"Нахождение длины. Обращаться len(self)"""

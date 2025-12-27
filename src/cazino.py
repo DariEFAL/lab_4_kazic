@@ -6,13 +6,13 @@ from player import Player
 from goose import Goose, HonkGoose, PlayGoose
 
 class Casino:
+    """Управляет симуляцией, случайными событиями"""
     def __init__(self):
         self.all_users = UsersCazino()
         self.all_goose = UsersCazino()
         self.goose = []
         self.num_user = 1
         self.num_goose = 1
-        self.step_counter = 0
 
     def add_player(self, player: Player) -> None:
         """Добавляет игрока в казино."""
